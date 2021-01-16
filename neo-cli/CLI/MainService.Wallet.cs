@@ -528,7 +528,7 @@ namespace Neo.CLI
             using (SnapshotCache snapshot = Blockchain.Singleton.GetSnapshot())
                 foreach (UInt160 account in CurrentWallet.GetAccounts().Select(p => p.ScriptHash))
                 {
-                    gas += NativeContract.NEO.UnclaimedGas(snapshot, account, snapshot.Height + 1);
+                    gas += NativeContract.NEO.UnclaimedGas(snapshot, account, Blockchain.Singleton.Height + 1);
                 }
             Console.WriteLine($"Unclaimed gas: {new BigDecimal(gas, NativeContract.GAS.Decimals)}");
         }

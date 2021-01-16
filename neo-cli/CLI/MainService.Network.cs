@@ -44,7 +44,7 @@ namespace Neo.CLI
         [ConsoleCommand("broadcast block", Category = "Network Commands")]
         private void OnBroadcastGetBlocksByHashCommand(UInt256 hash)
         {
-            OnBroadcastCommand(MessageCommand.Block, Blockchain.Singleton.GetBlock(hash));
+//            OnBroadcastCommand(MessageCommand.Block, Blockchain.Singleton.GetBlock(hash));
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Neo.CLI
         [ConsoleCommand("broadcast block", Category = "Network Commands")]
         private void OnBroadcastGetBlocksByHeightCommand(uint height)
         {
-            OnBroadcastCommand(MessageCommand.Block, Blockchain.Singleton.GetBlock(height));
+//            OnBroadcastCommand(MessageCommand.Block, Blockchain.Singleton.GetBlock(height));
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Neo.CLI
         [ConsoleCommand("broadcast transaction", Category = "Network Commands")]
         private void OnBroadcastTransactionCommand(UInt256 hash)
         {
-            OnBroadcastCommand(MessageCommand.Transaction, Blockchain.Singleton.GetTransaction(hash));
+//            OnBroadcastCommand(MessageCommand.Transaction, Blockchain.Singleton.GetTransaction(hash));
         }
 
         private void OnBroadcastCommand(MessageCommand command, ISerializable ret)

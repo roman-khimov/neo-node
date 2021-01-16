@@ -436,7 +436,7 @@ namespace Neo.CLI
                 fs.Write(BitConverter.GetBytes(count), 0, sizeof(uint));
             fs.Seek(0, SeekOrigin.End);
             Console.WriteLine("Export block from " + start + " to " + end);
-
+	    /*
             using (var percent = new ConsolePercent(start, end))
             {
                 for (uint i = start; i <= end; i++)
@@ -448,6 +448,7 @@ namespace Neo.CLI
                     percent.Value = i;
                 }
             }
+	    */
         }
 
         private static void WriteLineWithoutFlicker(string message = "", int maxWidth = 80)
@@ -469,7 +470,7 @@ namespace Neo.CLI
 
             if (account != null)
             {
-                using (SnapshotView snapshot = Blockchain.Singleton.GetSnapshot())
+                using (SnapshotCache snapshot = Blockchain.Singleton.GetSnapshot())
                 {
                     signers = CurrentWallet.GetAccounts()
                     .Where(p => !p.Lock && !p.WatchOnly && p.ScriptHash == account && NativeContract.GAS.BalanceOf(snapshot, p.ScriptHash).Sign > 0)
@@ -536,12 +537,14 @@ namespace Neo.CLI
             }
             else
             {
+		/*
                 if (contract.Manifest.Abi.GetMethod(operation) == null)
                 {
                     Console.WriteLine("This method does not not exist in this contract.");
                     result = StackItem.Null;
                     return false;
                 }
+		*/
             }
 
             byte[] script;
